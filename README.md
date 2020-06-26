@@ -42,7 +42,7 @@ You have to paste the following lines of code (replace the relevant parts where 
 	dosimilaritychecks("word2vec", "desired_name_for_input_embeddings_2", desired_name_of_model_2, "wmd")`
 
 + **NB:** `binaryfile` should be set to `True` if the embedding file is a binary file and `False` otherwise. This code adapts and retrains your custom embeddings to use with the pipeline.
-+ **NNB:** `desired_name_for_input_embeddings_1` and `"desired_name_for_input_embeddings_2` are different names that will appear in the output of the pipeline and are not the filename of the input embeddings. You can choose any name you want to call it so you recognise it in the output results of the pipeline
++ **NNB:** `desired_name_for_input_embeddings_1` and `desired_name_for_input_embeddings_2` are different names that will appear in the output of the pipeline and are not the filename of the input embeddings. You can choose any name you want to call it so you recognise it in the output results of the pipeline
 
 ##### Step 3: run the pipeline
 
