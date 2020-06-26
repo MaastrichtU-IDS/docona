@@ -1,0 +1,5 @@
+gensim==3.8.3
+nltk==3.5
+pandas==1.0.5
+pyemd==0.5.1
+sklearn==0.0
