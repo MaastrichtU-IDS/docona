@@ -1,5 +1,4 @@
 inputdata/processedtexts/*
-!inputdata/processedtexts/.gitkeep
 inputdata/resources/*
 !inputdata/resources/.gitkeep
 inputdata/fulltexts/*
