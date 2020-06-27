@@ -37,15 +37,15 @@ Please read the following instructions carefully before running the pipeline. If
 You have to paste the following lines of code (replace the relevant parts where necessary):
 
 	from pretrainedmodels import getdoc2vecmodel,getword2vecmodel
-	desired_name_of_model_1 = getdoc2vecmodel("desired_name_of_input_pretrained_embedding.extension", "desired_name_of_output_adapted_model.extension")									
-	desired_name_of_model_2 = getword2vecmodel("desired_name_of_input_pretrained_embedding.extension", "desired_name_of_output_similarity_matrix_file", binaryfile=True)
+	desired_name_of_model_1 = getdoc2vecmodel("name_of_input_pretrained_embedding_file.extension", "desired_name_of_output_adapted_model.extension")									
+	desired_name_of_model_2 = getword2vecmodel("name_of_input_pretrained_embedding_file.extension", "desired_name_of_output_similarity_matrix_file", binaryfile="True/False")
 
 	from pretrainedmodelssimilarity import dosimilaritychecks
 	dosimilaritychecks("doc2vec", "desired_name_for_input_embeddings_1", desired_name_of_model_1, "cosine")
 	dosimilaritychecks("word2vec", "desired_name_for_input_embeddings_2", desired_name_of_model_2, "wmd")`
 
-+ **NB:** `binaryfile` should be set to `True` if the embedding file is a binary file and `False` otherwise. This code adapts and retrains your custom embeddings to use with the pipeline.
-+ **NNB:** `desired_name_for_input_embeddings_1` and `desired_name_for_input_embeddings_2` are different names that will appear in the output of the pipeline and are not the filename of the input embeddings. You can choose any name you want to call it so you recognise it in the output results of the pipeline
++ **NB:** For the `binaryfile` variable, `"True/False"` should be replaced with `True` if the embedding file is a binary file and `False` otherwise. This code adapts and retrains your custom embeddings to use with the pipeline.
++ **NNB:** `desired_name_for_input_embeddings_1` and `desired_name_for_input_embeddings_2` are different names that will appear in the output of the pipeline and are **not** the filename of the input embeddings. They will be used in the generated report to associate the results of the pipeline with the different models. You can choose any name for these strings such that you will easily recognise the different models in the output results of the pipeline
 
 ##### Step 3: run the pipeline
 
