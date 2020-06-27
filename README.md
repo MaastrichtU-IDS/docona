@@ -6,10 +6,13 @@ DoConA is an open source, configurable, extensible Python tool to analyse the le
 
 Please read the following instructions carefully before running the pipeline. If you encounter problems or have feature suggestions, please file an [issue](https://github.com/MaastrichtU-IDS/docona/issues)
 
-##### Requirements:
+##### Software requirements:
 
 + [Python 3.7+](https://www.python.org/downloads/)
 + [Git](https://git-scm.com/) **or** an archive extractor like [7-Zip](https://www.7-zip.org/)
+
+##### Data requirements:
+
 + A set of input text documents in `.txt` format. The filename for each document should be a unique identifier for that document. E.g. `62016CJ0295.txt`
 + A CSV file named `citations.csv` representing the citation network of the input text documents. The file should have exactly two columns with headers `source` and `target` respectively in that order. The column data should consist exclusively of document identifiers (without the `.txt` file extension for the document. E.g. `62016CJ0295`). `source` identifiers represent the citing documents and `target` identifiers represent the cited documents
 + A CSV file called `sample.csv` which contains a representative sample of the document identifiers in your input corpus. The file should contain exactly one column with no header and each document identifier should appear on a new line. The pipeline will be executed on the sample of documents specified in this file
