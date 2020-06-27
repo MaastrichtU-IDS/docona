@@ -26,10 +26,10 @@ Please read the following instructions carefully before running the pipeline. If
 
 ##### Step 2: provide your data (documents, citation network and sample)
     
-+ Place your input text documents in the folder `docona/inputdata/fulltexts/` 
-+ Place your `citations.csv` and `sample.csv` files in the folder `docona/inputdata/`
-+ **Optional:** if you wish to provide [stop words](https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html), place your custom `stopwords.csv` file in the folder `docona/inputdata/resources/`
-+ **Optional:** if you wish to provide custom pretrained word embeddings to use with the pipeline, place these in the folder `docona/inputdata/resources/`
++ Place your input text documents in the folder `inputdata/fulltexts/` 
++ Place your `citations.csv` and `sample.csv` files in the folder `inputdata/`
++ **Optional:** if you wish to provide [stop words](https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html), place your custom `stopwords.csv` file in the folder `inputdata/resources/`
++ **Optional:** if you wish to provide custom pretrained word embeddings to use with the pipeline, place these in the folder `inputdata/resources/`
 + If you have chosen to provide the optional pretrained embeddings, you will have to study and modify the script `docona/docona.py` to include the following code snippets (copy and paste these into that script) where it states:
 
 	`# --- ADD CUSTOM PRETRAINED MODEL CODE HERE --- #`
