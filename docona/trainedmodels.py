@@ -40,9 +40,10 @@ def getdoc2vecmodel():
     if not model_exists:
         # No existing model
         documents = pickle.load( open( "../inputdata/resources/documents.pickle", "rb" ) )
-        model = Doc2Vec(vector_size=32, min_count=2, epochs=5)
+        model = Doc2Vec(vector_size=256, min_count=2, epochs=30)
         model.build_vocab(documents)
         model.train(documents, total_examples=model.corpus_count, epochs=model.epochs)
+        model.init_sims(replace=True)
         model_file = get_tmpfile(os.path.join(os.path.join(os.path.join(os.path.realpath('..'), "inputdata"), "resources"), "doc2vec.model"))
         model.save(model_file)
     
@@ -66,8 +67,8 @@ def getword2vecmodel():
         texts = []
         for doc in documents:
             texts.append(doc.words)
-        model = Word2Vec(texts, size=32, window=7, min_count=2, workers=2)
-        model.train(texts, total_examples=model.corpus_count,epochs=5)        
+        model = Word2Vec(texts, size=256, window=5, min_count=2, workers=4)
+        model.train(texts, total_examples=model.corpus_count,epochs=30)        
         model.init_sims(replace=True)
         model_file = get_tmpfile(os.path.join(os.path.join(os.path.join(os.path.realpath('..'), "inputdata"), "resources"), "word2vec.model"))
         model.save(model_file)

@@ -21,6 +21,20 @@ import csv
 import pandas as pd
 from utility import cleantoken, stemSentence
 
+def preprocessingdone():
+    fulltextpath = "../inputdata/fulltexts/"
+    processedtextpath = "../inputdata/processedtexts/"
+    resourcespath = "../inputdata/resources/"
+
+    if path.exists(processedtextpath) and path.exists(fulltextpath):
+        numfulltexts = len([name for name in os.listdir(fulltextpath) if os.path.isfile(os.path.join(fulltextpath, name))])
+        numprocessedtexts = len([name for name in os.listdir(processedtextpath) if os.path.isfile(os.path.join(processedtextpath, name))])
+        if numfulltexts == numprocessedtexts:
+            if os.path.isfile(resourcespath + 'documentID_to_tokenized.pickle') and os.path.isfile(resourcespath + 'data_to_tokenized.pickle') and os.path.isfile(resourcespath + 'datafortraining.pickle') and os.path.isfile(resourcespath + 'documents.pickle') and os.path.isfile(resourcespath + 'documentID_to_data.pickle') and os.path.isfile(resourcespath + 'index_to_documentID.pickle') and os.path.isfile(resourcespath + 'documentID_to_index.pickle') and os.path.isfile(resourcespath + 'word2vec.model') and os.path.isfile(resourcespath + 'doc2vec.model') and os.path.isfile(resourcespath + 'word2vecsimilaritymatrix.pickle'):
+                return True
+
+    return False
+                
 def preprocess():
     textpath = "../inputdata/fulltexts/"
     index_to_documentID = {}

@@ -9,8 +9,9 @@ print("-----------------------------------------------")
 print()
 print("1. Preprocessing documents...", end = '', flush=True)
 # Preprocessing full texts
-from preprocessdocs import preprocess
-preprocess()
+from preprocessdocs import preprocess, preprocessingdone
+if not preprocessingdone():
+	preprocess()
 print("Done!")
 print()
 print("2. Executing semantic measures")
@@ -18,19 +19,20 @@ print("a) Training corpus models...", end = '', flush=True)
 # Train Doc2Vec and Word2Vec models on full texts of documents
 from trainedmodels import getdoc2vecmodel,getword2vecmodel
 doc2vecmodel = getdoc2vecmodel()
-word2vecmodel = getword2vecmodel()
+# word2vecmodel = getword2vecmodel()
 print("Done!")
 print("b) Similarity checks: corpus models...", end = '', flush=True)
+print()
 # # Trained models: check document similarity
 from trainedmodelssimilarity import dosimilaritychecks
 dosimilaritychecks("doc2vec",doc2vecmodel,"cosine")
-dosimilaritychecks("word2vec",word2vecmodel,"wmd")
+# dosimilaritychecks("word2vec",word2vecmodel,"wmd")
+print()
 print("Done!")
 
-# --------------------------------------------- #
-# --- ADD CUSTOM PRETRAINED MODEL CODE HERE --- #
-# --------------------------------------------- #
-
+# # --------------------------------------------- #
+# # --- ADD CUSTOM PRETRAINED MODEL CODE HERE --- #
+# # --------------------------------------------- #
 # print("c) Adapting GoogleNews pretrained model...", end = '', flush=True)
 # # # GoogleNews pretrained load / train
 # from pretrainedmodels import getdoc2vecmodel,getword2vecmodel
@@ -53,7 +55,8 @@ print("Done!")
 # dosimilaritychecks("doc2vec", "law2vec", law2vecdoc2vecmodel, "cosine")
 # dosimilaritychecks("word2vec", "law2vec", law2vecword2vecmodel, "wmd")
 # print("Done!")
-print()
+# print()
+
 print("3. Executing syntactic measures")
 print("a) Training TFIDF and Ngram models...", end = '', flush=True)
 # # TFIDF, Ngram models load / train
@@ -66,6 +69,11 @@ print("b) Similarity checks: TFIDF, Ngram, Jaccard...", end = '', flush=True)
 dosyntacticsimilaritychecks("tfidf",tfidfmodel)
 dosyntacticsimilaritychecks("5gram",ngrammodel)
 dosyntacticsimilaritychecks("jaccard",model=None)
+print("Done!")
+print()
+print("4. Analysing results")
+from analyseresults import analyse
+analyse()
 print("Done!")
 print()
 print("-- FINISHED --")

@@ -13,6 +13,7 @@ import os
 import os.path
 from os import path
 import csv
+import time
 import math
 import operator
 
@@ -57,20 +58,31 @@ def find_similar(tfidf_matrix, index, top_n):
 
 def lookup_similar_documents_tfidf_based(sample_documents, n, model,methodname):
     results = []
+    num_samples = len(sample_documents)
+    count = 1
     for item in sample_documents:
+        start = time.time()
+        print(str(count) + "/" + str(num_samples) + "...", end='', flush=True)
+        count = count + 1
         index = documentID_to_index[item]                                                   # Look up this documents index in the TFIDF matrix
         similar_documents = find_similar(model, index, n)                                   # Look up top n similar documents for this document
         similar_documents_references = convert_to_document_references(similar_documents)
         for reference in similar_documents_references:
             results.append([item,reference[0],reference[1],methodname,exists_citation_link_between(item,reference[0])])
-
+        end = time.time()
+        timetaken = end-start
+        print(str(timetaken) + "s")
     return results
 
 def lookup_similar_documents_jaccard(sample_documents, n, methodname):
     results = []
 
-    num = len(sample_documents)
+    num_samples = len(sample_documents)
+    count = 1
     for item in sample_documents:
+        start = time.time()
+        print(str(count) + "/" + str(num_samples) + "...", end='', flush=True)
+        count = count + 1
         current_dict = {}
         for k,v in documentID_to_data.items():
             if k != item:
@@ -80,7 +92,9 @@ def lookup_similar_documents_jaccard(sample_documents, n, methodname):
         topn = sorted_dict[-n:]
         for reference in topn:
             results.append([item,reference[0],reference[1], methodname, exists_citation_link_between(item,reference[0])])
-
+        end = time.time()
+        timetaken = end-start
+        print(str(timetaken) + "s")
     return results
 
 # ### Main function

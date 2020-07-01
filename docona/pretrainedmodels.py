@@ -31,7 +31,7 @@ def getdoc2vecmodel(modelinputfilename,modeloutputfilename):
         min_count = 2
         sampling_threshold = 1e-5
         negative_size = 5
-        training_epochs = 5
+        training_epochs = 20
         dm = 0
         hs = 0
         worker_count = 4
@@ -41,6 +41,8 @@ def getdoc2vecmodel(modelinputfilename,modeloutputfilename):
         fname = get_tmpfile(os.path.join(os.path.join(os.path.join(os.path.realpath('..'), "inputdata"), "resources"), modeloutputfilename))
         # Train doc2vec model
         model = g.Doc2Vec(documents, vector_size=vector_size, window=window_size, min_count=min_count, sample=sampling_threshold, workers=worker_count, hs=hs, dm=dm, negative=negative_size, dbow_words=1, dm_concat=1, pretrained_emb=pretrained_emb, epochs=training_epochs)
+        model.train(documents, total_examples=model.corpus_count, epochs=model.epochs)
+        model.init_sims(replace=True)
         # Save model
         model.save(fname)
 

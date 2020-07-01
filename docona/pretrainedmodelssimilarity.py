@@ -10,6 +10,7 @@ from gensim.similarities import WmdSimilarity
 import os
 import os.path
 from os import path
+import time
 import csv
 import pandas as pd
 from helper import convert_to_document_references, exists_citation_link_between
@@ -19,27 +20,41 @@ from resources import documentID_to_data, documentID_to_index, sim, sampledocume
 def lookup_similar_documents_docvec_cosine(sample_documents, n, model, pretrained_embedding_name):
     results = []
 
+    num_samples = len(sample_documents)
+    count = 1
     for item in sample_documents:
+        start = time.time()
+        print(str(count) + "/" + str(num_samples) + "...", end='', flush=True)
+        count = count + 1
         similar_documents = model.docvecs.most_similar(documentID_to_index[item], topn=n)
         similar_documents_references = convert_to_document_references(similar_documents)
         for reference in similar_documents_references:
             method = pretrained_embedding_name + "_doc2vec_wmd"
             results.append([item,reference[0].replace(".txt",""),reference[1],method,exists_citation_link_between(item,reference[0])])
-
+        end = time.time()
+        timetaken = end-start
+        print(str(timetaken) + "s")
     return results
 
 # ### Look up top n similar documents per sample document (googlenews word2vec embeddings + word mover's distance)
 def lookup_similar_documents_word2vec_wmd(sample_documents, pretrained_embedding_name):
     results = []
     
+    num_samples = len(sample_documents)
+    count = 1
     for item in sample_documents:
+        start = time.time()
+        print(str(count) + "/" + str(num_samples) + "...", end='', flush=True)
+        count = count + 1
         similar_documents = sim[documentID_to_data[item]]
         similar_documents_references = convert_to_document_references(similar_documents)
         for reference in similar_documents_references:
             method = pretrained_embedding_name + "_word2vec_wmd"
             if (str(item) != str(reference[0])):
                 results.append([item,reference[0],reference[1],method,exists_citation_link_between(item,reference[0])])
-
+        end = time.time()
+        timetaken = end-start
+        print(str(timetaken) + "s")
     return results
 
 # ### Main function
