@@ -56,3 +56,8 @@ You have to paste the following lines of code (replace the relevant parts where 
 + Run the command `python docona.py`. **Note:** the pipeline can take a while to run on a mid-range machine (E.g. Quad-core, 16GB of RAM). For example, given 10,000 documents and a representative random sample of 500 documents, with two additional pretrained models, the pipeline can take close to 24 hours to run on such a machine. It is recommended to run the pipeline on a high performance computing platform
 + On successful completion of the pipeline, there will a `results.csv` placed in the folder `outputdata/`. DoConA will also generate various other model and data files during the run and will place these in the folders `inputdata/resources/` and `outputdata/`
 + Please see the [wiki](https://github.com/MaastrichtU-IDS/docona/wiki) for more detailed information about the generated data
+
+## License
+Copyright (C) 2020, Kody Moodley and Pedro Hernandez Serrano
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
