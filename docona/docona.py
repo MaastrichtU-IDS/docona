@@ -4,8 +4,8 @@
 # GNU AGPLv3 - https://choosealicense.com/licenses/agpl-3.0/
 
 print()
-print("Document Citation and Content Analysis (DoConA)")
-print("-----------------------------------------------")
+print("Document Citation and Content Analysis (DoConA) v1.0")
+print("----------------------------------------------------")
 print()
 print("1. Preprocessing documents...", end = '', flush=True)
 # Preprocessing full texts
