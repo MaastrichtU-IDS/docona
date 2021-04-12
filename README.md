@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4680673.svg)](https://doi.org/10.5281/zenodo.4680673)
+
 # DoConA: Document Content and Citation Analysis Tool
 
 DoConA is an open source, configurable, extensible Python tool to analyse the level of agreement between the citation network of a generic set of textual documents and the textual similarity between these documents.
